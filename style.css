@@ -77,3 +77,13 @@ img {
     color: rgb(223, 16, 16);
     text-align: center;
 }
+
+
+
+
+//display error
+const displayError = (showError) => {
+    // console.log(showError);
+    document.getElementById("display-error").innerHTML = (`Something went wrong!!! 
+    Check the issue below: <br> <br> ${showError}`);
+};

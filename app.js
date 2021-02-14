@@ -26,7 +26,7 @@ const showImages = (images) => {
         div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">`;
         gallery.appendChild(div);
     });
-    loadingSpinner();
+    loadingSpinner(); //calling function.
 
 };
 
@@ -35,8 +35,15 @@ const getImages = (query) => {
     fetch(`https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`)
         .then(response => response.json())
         .then(data => showImages(data.hits)) //debugged, here the bug was 'hitS' that should be 'hits'
-        .catch(err => console.log(err));
-    loadingSpinner();
+        .catch(err => displayError(err));
+    loadingSpinner(); //calling function.
+};
+
+//display error
+const displayError = (Error) => {
+    // console.log(showError);
+    document.getElementById("display-error").innerHTML = (`Something went wrong!!! 
+    Check the issue below: <br> <br> ${Error}`);
 };
 
 
