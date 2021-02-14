@@ -12,7 +12,7 @@ let sliders = [];
 // Find the name in the url and go to their website
 // to create your own api key
 // const KEY = '15674931-a9d714b6e9d654524df198e00&q';
-const KEY = '20268563-8c742cca526a0998386a40696&q';
+const KEY = '20268563-8c742cca526a0998386a40696&q'
 
 // show images 
 const showImages = (images) => {
@@ -37,6 +37,7 @@ const getImages = (query) => {
         .catch(err => console.log(err));
 };
 
+
 let slideIndex = 0;
 const selectItem = (event, img) => {
     let element = event.target;
@@ -47,7 +48,7 @@ const selectItem = (event, img) => {
         sliders.push(img);
     } else {
         // alert('Hey, Already added !')
-        sliders.splice(item, 1); //remove the selected items.
+        sliders.splice(item, 1); //removing the selected items.
     }
 };
 var timer;
@@ -124,9 +125,17 @@ searchBtn.addEventListener('click', function () {
     clearInterval(timer);
     const search = document.getElementById('search');
     getImages(search.value);
+    document.getElementById("search").value = "";
     sliders.length = 0;
 });
 
 sliderBtn.addEventListener('click', function () {
     createSlider();
+});
+
+// search by pressing enter
+document.getElementById("search").addEventListener("keypress", event => {
+    if (event.key === 'Enter') {
+        searchBtn.click();
+    }
 });
