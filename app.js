@@ -87,6 +87,8 @@ const createSlider = () => {
     `);
         duration = 1000;
     }
+    document.getElementById('duration').value = "";
+
     sliders.forEach(slide => {
         let item = document.createElement('div');
         item.className = "slider-item";
