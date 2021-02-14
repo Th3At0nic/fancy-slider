@@ -26,6 +26,7 @@ const showImages = (images) => {
         div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">`;
         gallery.appendChild(div);
     });
+    loadingSpinner();
 
 };
 
@@ -35,6 +36,7 @@ const getImages = (query) => {
         .then(response => response.json())
         .then(data => showImages(data.hits)) //debugged, here the bug was 'hitS' that should be 'hits'
         .catch(err => console.log(err));
+    loadingSpinner();
 };
 
 
@@ -129,13 +131,19 @@ searchBtn.addEventListener('click', function () {
     sliders.length = 0;
 });
 
-sliderBtn.addEventListener('click', function () {
-    createSlider();
-});
+const loadingSpinner = () => {
+    const spinner = document.getElementById("loading-spinner");
+    // console.log(spinner.classList); //this line is to check only. you 
+    spinner.classList.toggle("d-none");
+}
 
 // search by pressing enter
 document.getElementById("search").addEventListener("keypress", event => {
     if (event.key === 'Enter') {
         searchBtn.click();
     }
+});
+
+sliderBtn.addEventListener('click', function () {
+    createSlider();
 });
