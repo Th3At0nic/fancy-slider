@@ -1,3 +1,7 @@
+body {
+    background-color: thistle;
+}
+
 #sliders {
     height: 400px;
     width: 60%;
@@ -65,4 +69,11 @@ img {
         height: 300px;
         width: 90%;
     }
+}
+
+#display-error {
+    font-size: 20px;
+    font-weight: 700;
+    color: rgb(223, 16, 16);
+    text-align: center;
 }

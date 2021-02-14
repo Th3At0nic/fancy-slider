@@ -76,7 +76,6 @@ const createSlider = () => {
     let duration = document.getElementById('duration').value || 1000;
     if (duration < 0) {
         alert(`Time can't be negative, Try again.
-
     Now playing with default time.
     `);
         duration = 1000;
